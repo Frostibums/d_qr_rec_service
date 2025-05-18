@@ -1,7 +1,7 @@
 from io import BytesIO
+from uuid import UUID
 
 import qrcode
-from uuid import UUID
 
 from app.domain.qr_code import QRCode
 from app.infrastructure.db.repo import QRCodeRepository

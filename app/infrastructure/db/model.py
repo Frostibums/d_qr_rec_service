@@ -1,7 +1,7 @@
 import uuid
 from datetime import datetime
 
-from sqlalchemy import UUID, DateTime, Text, func, LargeBinary
+from sqlalchemy import UUID, DateTime, LargeBinary, func
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.domain.qr_code import QRCode
