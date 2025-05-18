@@ -12,7 +12,7 @@ class QRCodeRepository:
     def __init__(self, session: AsyncSession):
         self.session = session
 
-    async def create(self, user_id: UUID, qr_data: str) -> QRCode:
+    async def create(self, user_id: UUID, qr_data: bytes) -> QRCode:
         qr_db = QRCodeORM(user_id=user_id, qr_data=qr_data)
         qr_db.qr_data = qr_data
         self.session.add(qr_db)
@@ -20,7 +20,7 @@ class QRCodeRepository:
         await self.session.refresh(qr_db)
         return qr_db.to_domain()
 
-    async def update(self, user_id: UUID, qr_data: str) -> QRCode:
+    async def update(self, user_id: UUID, qr_data: bytes) -> QRCode:
         stmt = update(
             QRCodeORM
         ).where(

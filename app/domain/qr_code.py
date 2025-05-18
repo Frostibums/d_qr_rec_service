@@ -7,5 +7,5 @@ from uuid import UUID
 class QRCode:
     id: UUID
     user_id: UUID
-    qr_data: str
+    qr_data: bytes
     created_at: datetime

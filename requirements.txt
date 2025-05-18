@@ -13,3 +13,4 @@ aiokafka~=0.12.0
 cryptography~=44.0.3
 
 httpx~=0.28.1
+qrcode[pil]~=8.2

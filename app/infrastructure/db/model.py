@@ -1,7 +1,7 @@
 import uuid
 from datetime import datetime
 
-from sqlalchemy import UUID, DateTime, Text, func
+from sqlalchemy import UUID, DateTime, Text, func, LargeBinary
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.domain.qr_code import QRCode
@@ -21,7 +21,7 @@ class QRCodeORM(Base):
         unique=True,
         index=True,
     )
-    qr_data: Mapped[str] = mapped_column(Text)
+    qr_data: Mapped[bytes] = mapped_column(LargeBinary, nullable=False)
     created_at: Mapped[datetime] = mapped_column(
         DateTime,
         default=datetime.utcnow,

@@ -1,3 +1,4 @@
+import base64
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException
@@ -57,4 +58,7 @@ async def get_qr_code(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="QR code not found",
         )
-    return qr
+    return QRCodeOut(
+        user_id=qr.user_id,
+        qr_data=base64.b64encode(qr.qr_data).decode("utf-8"),
+    )
